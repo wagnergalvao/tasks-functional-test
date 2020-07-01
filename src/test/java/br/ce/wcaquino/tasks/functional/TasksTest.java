@@ -20,8 +20,8 @@ public class TasksTest {
 	public WebDriver acessarAplicacao() throws MalformedURLException {
 //		WebDriver driver = new ChromeDriver();
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-		WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),capabilities);
-		driver.navigate().to("http://localhost:8081/tasks/");
+		WebDriver driver = new RemoteWebDriver(new URL("http://192.168.1.41:4444/wd/hub"),capabilities);
+		driver.navigate().to("http://192.168.1.41:8081/tasks/");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;
 	}
@@ -55,7 +55,7 @@ public class TasksTest {
 
 	@Test
 	public void deveSalvarTarefaComDataFutura() throws MalformedURLException {
-		LocalDateTime dataTarefa = LocalDateTime.now().plusWeeks(1);
+		LocalDateTime dataTarefa = LocalDateTime.now().plusDays(1);
 		WebDriver driver = acessarAplicacao();
 
 		try {
