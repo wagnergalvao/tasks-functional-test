@@ -5,7 +5,7 @@
 	<groupId>br.ce.wcaquino.tasks</groupId>
 	<artifactId>functional-test</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -13,9 +13,23 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.20</version>
 				<configuration>
+					<skipTests>${skip.surefire.tests}</skipTests>
 					<parallel>all</parallel>
 					<useUnlimitedThreads>true</useUnlimitedThreads>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.18.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
