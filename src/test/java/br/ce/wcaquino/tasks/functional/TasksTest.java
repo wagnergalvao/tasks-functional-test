@@ -1,7 +1,9 @@
 package br.ce.wcaquino.tasks.functional;
 
+import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.TimeUnit;
@@ -19,11 +21,18 @@ public class TasksTest {
 
 	public WebDriver acessarAplicacao() throws MalformedURLException {
 //		WebDriver driver = new ChromeDriver();
+		String ipDaMaquina = null;
+		try {
+			ipDaMaquina = InetAddress.getLocalHost().getHostAddress();
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		WebDriver driver = new RemoteWebDriver(new URL("http://192.168.99.100:4444/wd/hub"),capabilities);
-		driver.navigate().to("http://192.168.1.34:8081/tasks/");
+		driver.navigate().to("http://" + ipDaMaquina + ":8081/tasks/");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		return driver;
+        return driver;
 	}
 
 	@Test
