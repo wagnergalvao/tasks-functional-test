@@ -16,7 +16,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class TasksTest {
-	public static DateTimeFormatter task = DateTimeFormatter.ofPattern("A EEEE");
+	public static DateTimeFormatter task = DateTimeFormatter.ofPattern("EEEE HH:mm:ss.SSS");
 	public static DateTimeFormatter dueDate = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 	public WebDriver acessarAplicacao() throws MalformedURLException {
